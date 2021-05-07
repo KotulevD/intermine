@@ -5,6 +5,8 @@ pipeline {
             steps {
                 sh 'ls -al'
                 //sh 'mv dockerhub.docker-compose.yml dockerhub.docker-compose.yml-'
+                sh 'cd docker-intermine-gradle-master'
+                sh 'ls -al'
                 sh 'docker-compose build'
                 sh 'echo "build"'
             }
