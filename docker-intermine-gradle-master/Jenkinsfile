@@ -3,7 +3,6 @@ pipeline {
     stages {
         stage('intermine build') {
             steps {
-                #sh 'cd  docker-intermine-gradle-master'
                 sh 'ls -al'
                 sh 'mv dockerhub.docker-compose.yml dockerhub.docker-compose.yml-'
                 sh 'docker-compose build'
