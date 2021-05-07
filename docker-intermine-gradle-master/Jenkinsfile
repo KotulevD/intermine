@@ -4,7 +4,7 @@ pipeline {
         stage('intermine build') {
             steps {
                 sh 'ls -al'
-                sh 'mv dockerhub.docker-compose.yml dockerhub.docker-compose.yml-'
+                //sh 'mv dockerhub.docker-compose.yml dockerhub.docker-compose.yml-'
                 sh 'docker-compose build'
                 sh 'echo "build"'
             }
