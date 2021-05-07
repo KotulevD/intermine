@@ -1,4 +1,9 @@
 pipeline {
+    //environment {
+    //    registry = 'kotulev/ftask'
+    //    registryCredential = 'DockerHub'
+    //    dockerImage = ''
+    }
     agent any
     stages {
         stage('intermine build') {
