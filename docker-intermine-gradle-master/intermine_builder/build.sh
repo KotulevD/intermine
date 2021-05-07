@@ -1,5 +1,3 @@
-#!/bin/bash
-
 if [ -d ${MINE_NAME:-biotestmine} ] && [ ! -z "$(ls -A ${MINE_NAME:-biotestmine})" ] && [ ! $FORCE_MINE_BUILD ]; then
     echo "$(date +%Y/%m/%d-%H:%M) Mine already exists"
     echo "$(date +%Y/%m/%d-%H:%M) Gradle: build webapp"
@@ -21,8 +19,8 @@ echo "" > /home/intermine/intermine/build.progress
 # Build InterMine if any of the envvars are specified.
 if [ ! -z ${IM_REPO_URL} ] || [ ! -z ${IM_REPO_BRANCH} ]; then
     echo "$(date +%Y/%m/%d-%H:%M) Start InterMine build" #>> /home/intermine/intermine/build.progress
-    echo "$(date +%Y/%m/%d-%H:%M) Cloning ${IM_REPO_URL:-https:///KotulevD/intermine-1} branch ${IM_REPO_BRANCH:-master} for InterMine build" #>> /home/intermine/intermine/build.progress
-    git clone ${IM_REPO_URL:-https://github.com/KotulevD/intermine-1} intermine --single-branch --branch ${IM_REPO_BRANCH:-master} --depth=1
+    echo "$(date +%Y/%m/%d-%H:%M) Cloning ${IM_REPO_URL:-https://github.com/intermine/intermine} branch ${IM_REPO_BRANCH:-master} for InterMine build" #>> /home/intermine/intermine/build.progress
+    git clone ${IM_REPO_URL:-https://github.com/intermine/intermine} intermine --single-branch --branch ${IM_REPO_BRANCH:-master} --depth=1
 
     cd intermine
 
@@ -52,7 +50,7 @@ if [ -d ${MINE_NAME:-biotestmine} ] && [ ! -z "$(ls -A ${MINE_NAME:-biotestmine}
 else
     # echo "$(date +%Y/%m/%d-%H:%M) Clone ${MINE_NAME:-biotestmine}" #>> /home/intermine/intermine/build.progress
     echo "$(date +%Y/%m/%d-%H:%M) Clone ${MINE_NAME:-biotestmine}"
-    git clone ${MINE_REPO_URL:-https://github.com/KotulevD/intermine-1} ${MINE_NAME:-biotestmine}
+    git clone ${MINE_REPO_URL:-https://github.com/intermine/biotestmine} ${MINE_NAME:-biotestmine}
     echo "$(date +%Y/%m/%d-%H:%M) Update keyword_search.properties to use http://solr" #>> /home/intermine/intermine/build.progress
     sed -i 's/localhost/'${SOLR_HOST:-solr}'/g' ./${MINE_NAME:-biotestmine}/dbmodel/resources/keyword_search.properties
 fi
